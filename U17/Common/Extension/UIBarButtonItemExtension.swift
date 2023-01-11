@@ -1,0 +1,33 @@
+//
+//  UIBarButtonItem.swift
+//  U17
+//
+//  Created by 章建明 on 2022/8/9.
+//
+
+import Foundation
+import UIKit
+
+extension UIBarButtonItem {
+    convenience init(image: UIImage?,
+                     selectImage: UIImage? = nil,
+                     imageEdgeInsets: UIEdgeInsets = .zero,
+                     target: Any?,
+                     action: Selector?) {
+        
+        let button = UIButton(type: .system)
+        button.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(selectImage?.withRenderingMode(.alwaysOriginal), for: .selected)
+        button.imageEdgeInsets = imageEdgeInsets
+        if action != nil {
+            button.addTarget(target, action: action!, for: .touchUpInside)
+        }
+        button.sizeToFit()
+        if button.bounds.width < 40 || button.bounds.height > 40 {
+            let width = 40 / button.bounds.height * button.bounds.width;
+            button.bounds = CGRect(x: 0, y: 0, width: width, height: 40)
+        }
+        
+        self.init(customView: button)
+    }
+}

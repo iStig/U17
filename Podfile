@@ -20,5 +20,5 @@ target 'U17' do
     pod 'IQKeyboardManagerSwift'
     pod 'EmptyDataSet-Swift'
     pod 'UINavigation-SXFixSpace'
-
+    pod 'FLEX', :configurations => ['Debug']
 end
